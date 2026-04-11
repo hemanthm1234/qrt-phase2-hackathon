@@ -38,6 +38,16 @@ Small collection of notebooks and helper scripts used for Phase 2 of the QRT Qua
 
 All Python dependencies are listed in `requirements.txt`.
 
+## Interesting Papers
+
+- **101 Formulaic Alphas — Zura Kakushadze**  
+  https://ssrn.com/abstract=2701346  
+  > Collection of 101 real-world alpha signals with explicit formulas; useful for building and combining short-horizon quant signals. :contentReference[oaicite:0]{index=0}  
+
+- **Time Series Momentum — Moskowitz, Ooi, Pedersen (AQR)**  
+  https://www.aqr.com/insights/research/journal-article/time-series-momentum  
+  > Shows that past returns (1–12 months) predict future returns across asset classes; foundation of trend-following strategies.   
+
 ## Contact
 
 Contact the repository owner for permission and questions. Redistribution is strictly prohibited.
