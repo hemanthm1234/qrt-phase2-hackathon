@@ -12,7 +12,7 @@ import os
 # Create stores folder if doens't exist
 
 BASE_DIR = os.path.dirname(os.getcwd())
-DATA_DIR = os.path.join(BASE_DIR, "stores")
+DATA_DIR = os.path.join(BASE_DIR, "stores_created")
 
 os.makedirs(DATA_DIR, exist_ok=True)
 
