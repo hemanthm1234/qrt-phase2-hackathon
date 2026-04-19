@@ -17,10 +17,7 @@ DATA_DIR = os.path.join(BASE_DIR, "stores")
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # %%
-url = "https://github.com/yszanwar/phase2_qrt_challenge/releases/download/price_data/all_prices_5000_tickers.parquet"
-
-response = requests.get(url)
-pv = pd.read_parquet(BytesIO(response.content), engine="pyarrow")
+pv = pd.read_parquet("yahoo_finance/all_prices_5000_tickers.parquet", engine="pyarrow")
 
 # %%
 #Calcuate Average Daily Volume for trailing 20 days
