@@ -2,6 +2,8 @@
 
 Small collection of notebooks and helper scripts used for Phase 2 of the QRT Quant Challenge India 2026.
 
+![flowchart](flowchart.svg)
+
 ## Repository layout
 
 - `top_5000_us_by_marketcap.csv` - universe of US tickers by market cap used for experiments.
