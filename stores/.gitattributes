@@ -1,0 +1,4 @@
+all_prices_5000_tickers.parquet filter=lfs diff=lfs merge=lfs -text
+returns.parquet filter=lfs diff=lfs merge=lfs -text
+universe_1m.parquet filter=lfs diff=lfs merge=lfs -text
+universe_5m.parquet filter=lfs diff=lfs merge=lfs -text
