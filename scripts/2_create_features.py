@@ -23,13 +23,21 @@ pv = pd.read_parquet("../yahoo_finance/all_prices_5000_tickers.parquet", engine=
 
 indicators = calculate_all_indicators_parallel(pv, n_jobs=-1)
 
-# %%
-# Downcasting to float32 to save memory, as we have a large number of features and rows
+# If indicators is a dict → merge it
+if isinstance(indicators, dict):
+    indicators = pd.concat(indicators, axis=1)
+
+# Optional but recommended: name levels
+if isinstance(indicators.columns, pd.MultiIndex):
+    indicators.columns.names = ["feature", "ticker"]
+
+# Downcast to save memory
 indicators = indicators.astype("float32")
 
-# %%
-# Save the indicators to a parquet file for later use in model training
-indicators.to_parquet(os.path.join(DATA_DIR, "features.parquet"), compression="zstd", engine="pyarrow")
-
-
+# Save
+indicators.to_parquet(
+    os.path.join(DATA_DIR, "features.parquet"),
+    compression="zstd",
+    engine="pyarrow"
+)
 
