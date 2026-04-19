@@ -1,10 +1,6 @@
 # %%
 import pandas as pd
 
-# For loading class on Google Colab
-!curl -O https://raw.githubusercontent.com/yszanwar/phase2_qrt_challenge/refs/heads/main/scripts/technical_indicators.py
-
-
 from technical_indicators import calculate_all_indicators_parallel
 import warnings
 warnings.filterwarnings("ignore")
@@ -14,16 +10,12 @@ import os
 
 # %%
 BASE_DIR = os.path.dirname(os.getcwd()) 
-DATA_DIR = os.path.join(BASE_DIR, "stores")
+DATA_DIR = os.path.join(BASE_DIR, "stores_created")
 
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # %%
-url = "https://github.com/yszanwar/phase2_qrt_challenge/releases/download/price_data/all_prices_5000_tickers.parquet"
-
-response = requests.get(url)
-pv = pd.read_parquet(BytesIO(response.content), engine="pyarrow")
-
+pv = pd.read_parquet("../yahoo_finance/all_prices_5000_tickers.parquet", engine="pyarrow")
 # %%
 # Calculate technical indicators using parellel processing
 # Please read file 'technical_indicators.py' for details on the indicators being calculated
