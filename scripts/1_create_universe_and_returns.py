@@ -17,7 +17,7 @@ DATA_DIR = os.path.join(BASE_DIR, "stores")
 os.makedirs(DATA_DIR, exist_ok=True)
 
 # %%
-pv = pd.read_parquet("yahoo_finance/all_prices_5000_tickers.parquet", engine="pyarrow")
+pv = pd.read_parquet("../yahoo_finance/all_prices_5000_tickers.parquet", engine="pyarrow")
 
 # %%
 #Calcuate Average Daily Volume for trailing 20 days
