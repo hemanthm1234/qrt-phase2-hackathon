@@ -5,9 +5,6 @@ import numpy as np
 import datetime
 import os, sys
 import importlib
-
-!curl -O https://raw.githubusercontent.com/yszanwar/phase2_qrt_challenge/refs/heads/main/scripts/utils.py
-
 import utils
 importlib.reload(utils)
 
@@ -43,34 +40,13 @@ def download_with_progress(url):
     buffer.seek(0)
     return buffer
 
-# -------- Features --------
-url_features = "https://github.com/yszanwar/phase2_qrt_challenge/releases/download/features/features.parquet"
-features = pd.read_parquet(download_with_progress(url_features), engine="pyarrow")
-
-# -------- Universe --------
-url_universe_1m = "https://github.com/yszanwar/phase2_qrt_challenge/releases/download/dataset/universe_1m.parquet"
-universe = pd.read_parquet(download_with_progress(url_universe_1m), engine="pyarrow")
-
-# -------- Returns --------
-url_returns = "https://github.com/yszanwar/phase2_qrt_challenge/releases/download/dataset/returns.parquet"
-returns = pd.read_parquet(download_with_progress(url_returns), engine="pyarrow")
-
-
-features.columns = pd.MultiIndex.from_tuples(
-    [ast.literal_eval(col) for col in features.columns]
-)
-features.index = universe.index
-
-sector_mapping = pd.read_csv("https://raw.githubusercontent.com/yszanwar/phase2_qrt_challenge/refs/heads/main/top_5000_us_by_marketcap.csv").set_index("symbol").sector
-
-
 # %%
-BASE_DIR = os.path.dirname(os.getcwd())
+BASE_DIR = "../"
 DATA_DIR = os.path.join(BASE_DIR, "stores")
 
 features = pd.read_parquet(os.path.join(DATA_DIR, "features.parquet"))
 
-universe = pd.read_parquet(os.path.join(DATA_DIR, "universe_1m.parquet"))
+universe = pd.read_parquet(os.path.join(DATA_DIR, "universe_5m.parquet"))
 
 returns = pd.read_parquet(os.path.join(DATA_DIR, "returns.parquet"))
 
